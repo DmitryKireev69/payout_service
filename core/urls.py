@@ -5,7 +5,7 @@ from rest_framework import routers
 from api.views import PaymentViewSet
 
 router = routers.DefaultRouter()
-router.register(r'payouts', PaymentViewSet)
+router.register(r'payouts', PaymentViewSet, basename='payout')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
