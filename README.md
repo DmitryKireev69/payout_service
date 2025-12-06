@@ -18,12 +18,20 @@ docker compose up -d --build
 Веб приложение доступно по адресу 127.0.0.1:8000
 ```
 
+# Запуск тестов
+```
+docker compose exec -it payout_service bash
+python manage.py test api.tests
+```
+
 # Полезные команды
 ```Логи backend:
 docker logs -f postgres_db
 docker logs -f redis
 docker logs -f payout_service
 docker logs -f celery_worker
+# Запуск всех тестов
+python manage.py test
 ```
 
 
