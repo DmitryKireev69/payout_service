@@ -20,7 +20,7 @@ class PaymentSerializer(serializers.ModelSerializer):
                 errors[field] = ['Это поле обязательно.']
 
         amount = data.get('amount')
-        if amount > Decimal('99,999,999.99'):
+        if amount > Decimal('99999999.99'):
             errors.setdefault('amount', []).append('Сумма слишком большая.')
 
         if errors:
