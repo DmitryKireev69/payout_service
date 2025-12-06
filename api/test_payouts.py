@@ -5,7 +5,9 @@ from django.test import TestCase
 from rest_framework.test import APIClient
 from rest_framework import status
 from django.urls import reverse
-from .models import PayoutClaim
+from api.models import PayoutClaim
+from unittest.mock import patch
+import uuid
 
 class TestsAPI(TestCase):
     """Тесты API для модели PayoutClaim."""
@@ -70,3 +72,16 @@ class TestsAPI(TestCase):
         response = self.client.delete(url)
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertEqual(PayoutClaim.objects.count(), 0)
+
+    def test_create_calls_celery_task(self):
+        """Проверка, что при создании выплаты вызывается Celery-задача."""
+        url = reverse("payout-list")
+        data = self.data.copy()  # новые данные для POST
+
+        # Мокаем Celery-задачу
+        with patch("api.tasks.process_payout.delay") as mock_task:
+            response = self.client.post(url, data, format="json")
+            self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+            payout_id = response.data["id"]
+            mock_task.assert_called_once_with(uuid.UUID(payout_id))
