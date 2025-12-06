@@ -21,7 +21,7 @@ docker compose up -d --build
 # Запуск тестов
 ```
 docker compose exec -it payout_service bash
-python manage.py test api.tests
+python manage.py test api.test_payouts
 ```
 
 # Полезные команды
