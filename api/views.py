@@ -3,6 +3,7 @@ from .models import PayoutClaim
 from .serializers import PaymentSerializer
 from .tasks import process_payout
 
+
 class PaymentViewSet(viewsets.ModelViewSet):
     queryset = PayoutClaim.objects.all()
     serializer_class = PaymentSerializer

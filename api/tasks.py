@@ -5,6 +5,7 @@ from .models import PayoutClaim
 
 logger = logging.getLogger(__name__)
 
+
 @shared_task
 def process_payout(payout_id):
     logger.info(f"Начало обработки заявки с ID {payout_id}")

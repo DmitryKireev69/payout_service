@@ -3,6 +3,7 @@ from decimal import Decimal
 from rest_framework import serializers
 from .models import PayoutClaim
 
+
 class PaymentSerializer(serializers.ModelSerializer):
     class Meta:
         model = PayoutClaim
@@ -27,4 +28,3 @@ class PaymentSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(errors)
 
         return data
-

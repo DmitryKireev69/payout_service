@@ -24,7 +24,11 @@ class PayoutClaim(models.Model):
         REJECTED = 'rejected', 'Отклонена'
         CANCELLED = 'cancelled', 'Отменена'
 
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, verbose_name='Идентификатор заяки на выплату')
+    id = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False,
+        verbose_name='Идентификатор заяки на выплату')
     amount = models.DecimalField(
         max_digits=10,
         decimal_places=2,

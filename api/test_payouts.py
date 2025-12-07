@@ -9,6 +9,7 @@ from api.models import PayoutClaim
 from unittest.mock import patch
 import uuid
 
+
 class TestsAPI(TestCase):
     """Тесты API для модели PayoutClaim."""
 
