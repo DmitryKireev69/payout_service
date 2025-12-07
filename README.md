@@ -1,7 +1,7 @@
 # 1.Клонировать репозиторий:
 ```
 git clone https://github.com/DmitryKireev69/payout_service.git
-cd money_collect_service
+cd payout_service
 ```
 # 2. Создать файл переменных окружения:
 ```   
@@ -20,7 +20,11 @@ docker compose up -d --build
 
 # Запуск тестов
 ```
-docker compose exec -it payout_service bash
+Что бы зайти в контейнер используем команду:
+    docker exec -it payout_service bash  - в любой директории
+    или
+    docker compose exec -it web bash - в директории с проектом
+Далее запускаем тесты командой
 python manage.py test api.test_payouts
 ```
 

@@ -15,7 +15,7 @@ if [ "$1" = "django" ]; then
 elif [ "$1" = "celery" ]; then
     shift
     echo "Запуск Celery воркера..."
-    exec celery -A collect_service worker "$@"
+    exec celery -A core worker "$@"
 
 else
     echo "Неизвестная команда, выполнение: $@"
